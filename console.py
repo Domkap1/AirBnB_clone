@@ -2,13 +2,28 @@
 """Defines the HBNB console."""
 import cmd
 from models.base_models import BaseModel
-from models.engine.file_storage import storage
+from models import storage
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
   """Defines the HBNB comaand interpreter."""
   prompt = "(hbnb)"
   intro = "Welcome to hbnb!"
+  __classes = {
+    "Amenity",
+    "BaseModels",
+    "City",
+    "Place",
+    "State",
+    "Review",
+    "User"
+  }
 
 def emptyline(self):
   """Pass empty line."""
