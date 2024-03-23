@@ -98,6 +98,36 @@ def do_all(self, args):
   all_strings = [str(instance) for instance in instances.values()]
   print(all_strings)
 
+def do_count(self, args):
+  """Retrieve number of instance of a class."""
+  args = args.split()
+  count = 0
+  for obj in storage.all().values():
+    if args[0] == obj.__class__.__name__:
+      count += 1
+  print(count)
 
+def do_update(self, args):
+  """Updates class instance of given id."""
+  args = args.split()
+  obj_dict = storage.all()
+  if len(args) == 0:
+    print("**bclass doesn't exist **")
+    return False
+  if len(args) == 1:
+    print("** instance id missing **")
+    return False
+  if "{}.{}".format(args[0], args[1]) not in obj_dict.keys():
+    print("** no instance found **")
+    return False
+  if len(args) == 2:
+    print("** attribute name missing **")
+    return False
+  if len(args) == 3:
+    try:
+      type(eval(args[2])) != dict
+    except NameError:
+      print("** value missing **")
+      return False
 if __name__ == '__main__':
   HBNBCommand().cmdloop()
