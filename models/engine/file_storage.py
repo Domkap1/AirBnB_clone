@@ -2,6 +2,12 @@
 """Defines the file storae class."""
 from models.base_models import BaseModel
 import json
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -20,6 +26,7 @@ class FileStorage:
 
     def save(self):
         """Serializes objects to JSON file."""
+        
         with open(self.__file_path, "w") as f:
             json.dump(self.__objects, f)
 
@@ -27,6 +34,9 @@ class FileStorage:
         """Deserializes JSON files to objects."""
         try:
             with open(self.__file_path, "r") as f:
-                self.__objects = json.load(f)
+                obj_dict = json.load(f)
+                for o in obj_dict.values{}:
+                    class_name = o["__class__"]
+                    self.new(eval(class_name)(**o))      
         except FileNotFoundError:
             pass
