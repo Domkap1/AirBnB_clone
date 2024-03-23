@@ -112,7 +112,7 @@ def do_update(self, args):
   args = args.split()
   obj_dict = storage.all()
   if len(args) == 0:
-    print("**bclass doesn't exist **")
+    print("** class doesn't exist **")
     return False
   if len(args) == 1:
     print("** instance id missing **")
@@ -129,5 +129,7 @@ def do_update(self, args):
     except NameError:
       print("** value missing **")
       return False
+
+
 if __name__ == '__main__':
   HBNBCommand().cmdloop()
