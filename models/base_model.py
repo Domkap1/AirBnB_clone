@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""This is the base model script"""
+"""This script is the base model"""
 
 import uuid
 from datetime import datetime
-from models.engine.file_storage import FileStorage
+from models import storage
+
 
 class BaseModel:
 
